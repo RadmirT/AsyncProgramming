@@ -1,0 +1,19 @@
+﻿<Window x:Class="AsyncProgramming.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Clicker" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnDownload" Content="Download" HorizontalAlignment="Left" Margin="463,247,0,0" VerticalAlignment="Top" Width="209" Height="59" Click="BtnDownload_Click"/>
+        <Button x:Name="btnClick" Content="Click Me" HorizontalAlignment="Left" Margin="110,247,0,0" VerticalAlignment="Top" Width="209" Height="59" Click="BtnClick_Click"/>
+        <TextBox x:Name="txtClick" HorizontalAlignment="Left" Height="155" Margin="110,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" IsReadOnly="True"/>
+        <TextBox x:Name="txtDownload" HorizontalAlignment="Left" Height="155" Margin="463,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" IsReadOnly="True"/>
+        <TextBox x:Name="txtExceptions" HorizontalAlignment="Left" Height="42" Margin="239,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" IsReadOnly="True"/>
+        <Label x:Name="lblExceptions" Content="Exceptions:" HorizontalAlignment="Left" Margin="363,319,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblClick" Content="Counter value" HorizontalAlignment="Left" Margin="177,32,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblDownload" Content="Download result" HorizontalAlignment="Left" Margin="521,32,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
