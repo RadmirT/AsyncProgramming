@@ -26,7 +26,7 @@ namespace AsyncProgramming
         {
             try
             {
-                txtDownload.Text += DownloadString("http://microsoft.com/");
+                txtDownload.Text += DownloadString("https://microsoft.com/");
             }
             catch (Exception ex)
             {

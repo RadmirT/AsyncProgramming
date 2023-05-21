@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sync vs async load test</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@4.7.0/dist/apexcharts.min.js"></script>
+</head>
+<body>
+<main style="max-width:1200px;margin:24px auto;padding:20px;color:#172033;background:#fff;font:16px system-ui,sans-serif">
+  <h2>Sync vs async</h2>
+  <p>Sync and async run separately. The charts align successful responses from /Home/LoadSync
+    and /Home/LoadAsync by elapsed time since the start of each run.</p>
+  <p id="comparison-load"></p>
+  <p><a href="sync.html">Full sync report</a> · <a href="async.html">Full async report</a></p>
+  <p>Hover over the lines to compare values. Click a legend entry to toggle its line.</p>
+  <div id="sync-async-latency"></div>
+  <div id="sync-async-rps"></div>
+  <p id="sync-async-chart-status" role="status"></p>
+</main>
+<script id="comparison-data" type="application/json">/* REPORT_DATA */</script>
+<script>
+(() => {
+    const data = JSON.parse(document.getElementById("comparison-data").textContent);
+    document.getElementById("comparison-load").textContent =
+        `Each run starts at ${data.usersPerStep} users and adds ${data.usersPerStep} every ${data.stepSeconds} s. ` +
+        `It reaches ${data.maxUsers} users at ${data.rampSeconds} s. Chart intervals are ${data.reportingSeconds} s.`;
+    const status = document.querySelector("#sync-async-chart-status");
+    if (!data.sync.length || !data.async.length || typeof ApexCharts === "undefined") {
+        status.textContent = !data.sync.length || !data.async.length
+            ? "Timeline data is missing for one or both runs."
+            : "The chart library could not be loaded.";
+        return;
+    }
+
+    const routes = [
+        { name: "sync", path: "/Home/LoadSync" },
+        { name: "async", path: "/Home/LoadAsync" }
+    ];
+    const runs = routes.map(({ name, path }) => new Map(data[name].map(({ Timestamp, ScenarioStats }) => {
+        const end = Timestamp.split(":").reduce((seconds, part) => seconds * 60 + Number(part), 0);
+        const step = ScenarioStats.find(scenario => scenario.ScenarioName === name)?.StepStats
+            .find(step => step.StepName === path);
+        return [end, step];
+    })));
+    const times = [...new Set(runs.flatMap(run => [...run.keys()]))].sort((a, b) => a - b);
+
+    function draw(id, title, unit, getValue) {
+        const series = routes.map(({ name }, index) => ({
+            name,
+            data: times.map(end => ({
+                x: end,
+                y: runs[index].has(end) ? getValue(runs[index].get(end)) : null
+            }))
+        }));
+        return new ApexCharts(document.getElementById(id), {
+            chart: { type: "line", height: 300, fontFamily: "system-ui, sans-serif" },
+            title: { text: title },
+            series,
+            colors: ["#a44900", "#0065b8"],
+            stroke: { curve: "straight", width: 3, dashArray: [0, 5] },
+            markers: { size: 3 },
+            xaxis: { type: "numeric", min: 0, title: { text: "Elapsed time (s)" } },
+            yaxis: { min: 0, title: { text: unit }, decimalsInFloat: 1 },
+            tooltip: {
+                shared: true,
+                intersect: false,
+                x: { formatter: end => `${Math.max(0, end - data.reportingSeconds)}–${end} s` },
+                y: { formatter: value => value == null ? "No samples" : `${value.toFixed(2)} ${unit}` }
+            }
+        }).render();
+    }
+
+    Promise.all([
+        draw("sync-async-latency", "p95 response time", "ms",
+            step => step?.Ok.Request.Count > 0 ? step.Ok.Latency.Percent95 : null),
+        draw("sync-async-rps", "Successful requests per second", "req/s",
+            step => step?.Ok.Request.RPS ?? 0)
+    ]).catch(() => {
+        status.textContent = "The comparison charts could not be rendered.";
+    });
+})();
+</script>
+</body>
+</html>

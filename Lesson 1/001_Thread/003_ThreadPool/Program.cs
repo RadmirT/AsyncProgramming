@@ -14,11 +14,13 @@ for (int i = 0; i < 40; i++)
 
 threadPoolWorker.Wait();
 
-Console.WriteLine($"Программа закончила свою работу.");
+Console.WriteLine();
+Console.WriteLine("Программа закончила свою работу.");
 
 void StarWriter(object arg)
 {
     char item = (char)arg;
+     
 
     for (int i = 0; i < 120; i++)
     {

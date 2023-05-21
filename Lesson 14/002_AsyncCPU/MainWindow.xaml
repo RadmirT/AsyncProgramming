@@ -1,0 +1,16 @@
+﻿<Window x:Class="AsyncCPU.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncCPU"
+        mc:Ignorable="d"
+        Title="Async CPU" Height="360" Width="800">
+    <Grid>
+        <Button x:Name="btnStartSync" Content="Начать (Sync)" HorizontalAlignment="Left" Margin="91,225,0,0" VerticalAlignment="Top" Width="238" Height="79" FontSize="35" Click="BtnStartSync_Click"/>
+        <Button x:Name="btnStartAsync" Content="Начать (Async)" HorizontalAlignment="Left" Margin="477,225,0,0" VerticalAlignment="Top" Width="238" Height="79" FontSize="35" Click="BtnStartAsync_Click"/>
+        <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="772" VerticalScrollBarVisibility="Visible"/>
+
+        <ProgressBar Grid.Row="1" IsIndeterminate="True" Height="10" VerticalAlignment="Bottom"></ProgressBar>
+    </Grid>
+</Window>

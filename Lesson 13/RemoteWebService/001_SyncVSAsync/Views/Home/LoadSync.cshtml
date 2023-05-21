@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Contracts.Person>
+@{
+    ViewBag.Title = "LoadSync";
+}
+
+<h2>Страница с синхронным запросом данных</h2>
+
+<h3>Загружено (в секундах @ViewBag.Timer.Elapsed.Seconds)</h3>
+
+@foreach (var item in Model)
+{
+    <p>Id[@item.Id] @item.Surname @item.Surname в возрасте @item.Age с зарплатой @item.Salary</p>
+}

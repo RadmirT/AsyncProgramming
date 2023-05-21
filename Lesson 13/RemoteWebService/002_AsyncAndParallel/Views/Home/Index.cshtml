@@ -1,0 +1,38 @@
+﻿@model             ServiceManager
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Главная страница сайта</h2>
+
+<h4 style="font-weight:bold">Новости:</h4>
+<p>"@Model.News.Topic". Произошло @Model.News.TimeOfIncident.ToShortDateString()</p>
+
+<h4 style="font-weight:bold">Киноафиша: </h4>
+
+@foreach (var item in Model.MoviePoster.GetMovies)
+{
+    @: Название: @item.Description
+    <br />
+    @: Цена: @item.Price
+    <hr />
+}
+
+<br />
+<br />
+
+<h4 style="font-weight:bold">
+    Затрачено времени: <p style="color:red;">@Model.ElapsedTime</p>
+</h4>
+
+<br />
+<br />
+
+<h4 style="font-weight:bold">Сообщения:</h4>
+
+@foreach (var item in Model.Messages)
+{
+    <p>@item</p>
+}

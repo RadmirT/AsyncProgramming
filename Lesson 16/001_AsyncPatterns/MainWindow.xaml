@@ -1,0 +1,20 @@
+﻿<Window x:Class="AsyncPatterns.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncPatterns"
+        mc:Ignorable="d"
+        Title="Async Patterns" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtAPMResult" HorizontalAlignment="Left" Height="141" Margin="46,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228" VerticalScrollBarVisibility="Visible"/>
+        <Button x:Name="apm" Content="APM" HorizontalAlignment="Left" Margin="110,317,0,0" VerticalAlignment="Top" Width="75" Click="Apm_Click"/>
+        <Button x:Name="eap" Content="EAP" HorizontalAlignment="Left" Margin="369,317,0,0" VerticalAlignment="Top" Width="75" Click="Eap_Click"/>
+        <Button x:Name="tap" Content="TAP" HorizontalAlignment="Left" Margin="609,317,0,0" VerticalAlignment="Top" Width="75" Click="Tap_Click"/>
+        <TextBox x:Name="txtEAPResult" HorizontalAlignment="Left" Height="141" Margin="292,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228" VerticalScrollBarVisibility="Visible"/>
+        <TextBox x:Name="txtTAPResult" HorizontalAlignment="Left" Height="141" Margin="536,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228" VerticalScrollBarVisibility="Visible"/>
+        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="369,362,0,0" VerticalAlignment="Top" Width="75" Click="Clear_Click"/>
+
+
+    </Grid>
+</Window>
