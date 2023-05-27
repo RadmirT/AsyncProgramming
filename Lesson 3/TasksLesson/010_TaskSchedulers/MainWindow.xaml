@@ -1,0 +1,16 @@
+﻿<Window x:Class="TaskSchedulers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskSchedulers"
+        mc:Ignorable="d"
+        Title="TaskSchedulers" Height="450" Width="681.579">
+    <Grid Margin="0,0,2,0">
+        <TextBox x:Name="txtContinuations" HorizontalAlignment="Left" Height="399" Margin="29,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" RenderTransformOrigin="2.054,0.516"/>
+        <Button x:Name="btnStart" Content="Запуск" HorizontalAlignment="Left" Margin="274,175,0,0" VerticalAlignment="Top" Width="131" Height="39" Click="BtnStart_Click"/>
+        <TextBox x:Name="txtThreadPool" HorizontalAlignment="Left" Height="399" Margin="428,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"/>
+        <Label x:Name="lblThreadId" Content="UI Thread Id - " HorizontalAlignment="Left" Margin="293,144,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
