@@ -1,0 +1,19 @@
+﻿<Window x:Class="AsyncMethods.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncMethods"
+        xmlns:controls="clr-namespace:AsyncMethods.UserControls"
+        mc:Ignorable="d"
+        Title="Task Delay" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtClick" HorizontalAlignment="Left" Height="85" Margin="50,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348"/>
+        <TextBox x:Name="txtDelay" HorizontalAlignment="Left" Height="85" Margin="403,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348"/>
+        <Button x:Name="btnInc" Content="Increment" HorizontalAlignment="Left" Margin="106,253,0,0" VerticalAlignment="Top" Width="242" Height="66" FontSize="30" Click="BtnInc_Click"/>
+        <Button x:Name="btnDelay" Content="Delay" HorizontalAlignment="Left" Margin="457,253,0,0" VerticalAlignment="Top"   Width="242" Height="66" FontSize="30" Click="BtnDelay_Click"/>
+        <controls:LoadingIndicator x:Name="li" Visibility="Hidden" Margin="538,253,165,92" RenderTransformOrigin="0.17,1.122" />
+        
+        <ProgressBar Grid.Row="1" IsIndeterminate="True" Height="10" VerticalAlignment="Bottom"></ProgressBar>
+    </Grid>
+</Window>
