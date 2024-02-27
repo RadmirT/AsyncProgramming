@@ -1,0 +1,15 @@
+﻿<Window x:Class="_005_Deadlock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_005_Deadlock"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <TextBox x:Name="txtResult" DockPanel.Dock="Top" Width="300" Margin="0 40 0 20" Padding="5" IsReadOnly="True"></TextBox>
+        <Button x:Name="btnDownload" DockPanel.Dock="Top" Width="300" Margin="0 20 0 20" Padding="10" Click="btnDownload_Click">Загрузить</Button>
+        <ProgressBar DockPanel.Dock="Bottom" Height="20" IsIndeterminate="True"></ProgressBar>
+        <Grid></Grid>
+    </DockPanel>
+</Window>
