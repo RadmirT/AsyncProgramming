@@ -1,0 +1,17 @@
+﻿<Window x:Class="_001_Progress.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_001_Progress"
+        mc:Ignorable="d"
+        Title="Progress" Height="450" Width="800">
+    <DockPanel>
+        <UniformGrid DockPanel.Dock="Bottom">
+            <Button x:Name="btnStart" HorizontalAlignment="Right" Width="120" Margin="5" Click="btnStart_Click" >Начать</Button>
+            <Button x:Name="btnCancel" HorizontalAlignment="Left" Width="120"  Margin="5" Click="btnCancel_Click">Отмена</Button>
+        </UniformGrid>
+        <ProgressBar x:Name="pb" DockPanel.Dock="Bottom" Height="20" Margin="5"></ProgressBar>
+        <TextBox x:Name="txtRes"  Margin="5" IsReadOnly="True" AcceptsReturn="True"></TextBox>
+</DockPanel>
+</Window>
