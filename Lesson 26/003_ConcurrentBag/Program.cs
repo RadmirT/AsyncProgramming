@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 
-await ConcurrentBag_UseTheOtherThreads();
-//await ConcurrentBag_UseTheSameThreads();
+//await ConcurrentBag_UseTheOtherThreads();
+await ConcurrentBag_UseTheSameThreads();
 
 async Task ConcurrentBag_UseTheOtherThreads()
 {
@@ -14,6 +14,7 @@ async Task ConcurrentBag_UseTheOtherThreads()
             bag.Add($"({Thread.CurrentThread.ManagedThreadId} - {i})");
         }
     };
+
 
     var thread1 = new Thread(_=>action());
     var thread2 = new Thread(_ => action());
@@ -39,7 +40,7 @@ async Task ConcurrentBag_UseTheOtherThreads()
             Console.WriteLine($"Элемент {item} взят в потоке {Thread.CurrentThread.ManagedThreadId}");
         }
     };
-    Thread.Sleep(500);
+
     var t1 = Task.Run(action);
     var t2 = Task.Run(action);
     await Task.WhenAll(t1, t2);
@@ -51,7 +52,7 @@ static async Task ConcurrentBag_UseTheSameThreads()
 
     Action action = () =>
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             bag.Add($"({Thread.CurrentThread.ManagedThreadId} - {i})");
         }
