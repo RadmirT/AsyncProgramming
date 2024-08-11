@@ -17,7 +17,7 @@ double santaBarbaraValue = movieRating["Santa Barbara"];
 bool isSuccess = movieRating.TryUpdate("Santa Barbara", santaBarbaraValue * 2, santaBarbaraValue);
 if (isSuccess == true)
 {
-    Console.WriteLine($"У сериала Santa Barbara рейтинг - {santaBarbaraValue} \n");
+    Console.WriteLine($"У сериала Santa Barbara рейтинг - {movieRating["Santa Barbara"]} \n");
 }
 
 isSuccess = movieRating.TryGetValue("Тёмный рыцарь", out double theDarkKnightValue);
